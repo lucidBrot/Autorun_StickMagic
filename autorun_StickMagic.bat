@@ -13,7 +13,7 @@
 ::Make sure that stick is set to always have drive letter Q
 
 REM set "debug=y"
-set "debug=y" #remove y to stop debug mode, add y after = to enter debug mode
+set "debug=" #remove y to stop debug mode, add y after = to enter debug mode
 REM REM SetLocal EnableDelayedExpansion
 REM REM needed for for-loop, otherwise variable is evaluated at parse time.
 if defined debug (echo "Testing if Q:\.stickmagic exists")
@@ -30,6 +30,8 @@ if not exist "Q:\.stickmagic.sig" (
 if defined debug (echo "verifying pgp signature...")
 ::disable any local variable called errorlevel
 set "errorlevel="
+::verify the signature
+gpg --status-fd 1 --verify "Q:\.stickmagic.sig" 2>nul
 if %ERRORLEVEL% NEQ 0 (
 	if %ERRORLEVEL% == 1 (
 		if defined debug (echo "BAD SIGNATURE.")
