@@ -5,7 +5,7 @@
 ::Start steam:  --steam--
 ::Start curse: --curse--
 
-::Make sure to sign the command file with
+::Make sure to sign the command file with (A1A4E7B9)
 ::....................................................................
 :: gpg -a -b -o ./.stickmagic.sig -u eric@mink.li -s ./.stickmagic  ::
 ::....................................................................
@@ -31,7 +31,7 @@ if defined debug (echo "verifying pgp signature...")
 ::disable any local variable called errorlevel
 set "errorlevel="
 ::verify the signature
-gpg --no-default-keyring --keyring "C:\Users\Eric\Desktop\autorun_stickmagic\pubkey.gpg" --status-fd 1 --verify "Q:\.stickmagic.sig" 2>nul
+gpg --no-default-keyring --keyring "C:\Users\Eric\Desktop\autorun_stickmagic\.stickmagic.pubkey.gpg" --status-fd 1 --verify "Q:\.stickmagic.sig" 2>nul
 if %ERRORLEVEL% NEQ 0 (
 	if %ERRORLEVEL% == 1 (
 		if defined debug (echo "BAD SIGNATURE.")
