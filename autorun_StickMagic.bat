@@ -31,7 +31,7 @@ if defined debug (echo "verifying pgp signature...")
 ::disable any local variable called errorlevel
 set "errorlevel="
 ::verify the signature
-gpg --status-fd 1 --verify "Q:\.stickmagic.sig" 2>nul
+gpg --no-default-keyring --keyring "C:\Users\Eric\Desktop\autorun_stickmagic\pubkey.gpg" --status-fd 1 --verify "Q:\.stickmagic.sig" 2>nul
 if %ERRORLEVEL% NEQ 0 (
 	if %ERRORLEVEL% == 1 (
 		if defined debug (echo "BAD SIGNATURE.")
